@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: kong
-        image: kong-oidc:1.0.0
+        image: ghcr.io/mvdcreativo/kong-oidc:1.0.0
         env:
           - name: KONG_DATABASE
             value: "off"
