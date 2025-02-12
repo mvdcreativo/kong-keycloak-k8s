@@ -51,20 +51,20 @@ spec:
         volumeMounts:
           - name: kong-config
             mountPath: /kong/declarative
-        livenessProbe:
-          httpGet:
-            path: /status
-            port: 8001
-          initialDelaySeconds: 10
-          periodSeconds: 10
-          timeoutSeconds: 5
-        readinessProbe:
-          httpGet:
-            path: /status
-            port: 8001
-          initialDelaySeconds: 10
-          periodSeconds: 10
-          timeoutSeconds: 5
+        # livenessProbe:
+        #   httpGet:
+        #     path: /status
+        #     port: 8001
+        #   initialDelaySeconds: 10
+        #   periodSeconds: 10
+        #   timeoutSeconds: 5
+        # readinessProbe:
+        #   httpGet:
+        #     path: /status
+        #     port: 8001
+        #   initialDelaySeconds: 10
+        #   periodSeconds: 10
+        #   timeoutSeconds: 5
       volumes:
         - name: kong-config
           configMap:
