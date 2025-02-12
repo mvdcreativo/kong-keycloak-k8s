@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: kong
-        image: kong:2.8.1
+        image: kong-oidc:1.0.0
         env:
           - name: KONG_DATABASE
             value: "off"
