@@ -16,12 +16,14 @@ spec:
     spec:
       containers:
       - name: kong
-        image: kong:latest
+        image: kong:2.8.1
         env:
           - name: KONG_DATABASE
             value: "off"
           - name: KONG_DECLARATIVE_CONFIG
             value: "/kong/declarative/kong.yaml"
+          - name: KONG_PLUGINS
+            value: "bundled,oidc"
           - name: KONG_PROXY_ACCESS_LOG
             value: "/dev/stdout"
           - name: KONG_ADMIN_ACCESS_LOG
@@ -49,6 +51,20 @@ spec:
         volumeMounts:
           - name: kong-config
             mountPath: /kong/declarative
+        livenessProbe:
+          httpGet:
+            path: /status
+            port: 8001
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          timeoutSeconds: 5
+        readinessProbe:
+          httpGet:
+            path: /status
+            port: 8001
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          timeoutSeconds: 5
       volumes:
         - name: kong-config
           configMap:

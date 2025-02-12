@@ -7,6 +7,7 @@ data:
     _format_version: "1.1"
     services:
       - name: example-service
+        # URL del servicio backend de ejemplo (reemplázala según tus necesidades)
         url: http://example.com
         routes:
           - name: example-route
@@ -17,7 +18,7 @@ data:
                 config:
                   client_id: kong-client
                   client_secret: secret
-                  # URL de descubrimiento de Keycloak (ajusta el realm si es necesario)
+                  # La URL de descubrimiento usa "keycloak" como hostname; asegúrate que el Service Keycloak esté correctamente configurado.
                   discovery: http://keycloak:8080/auth/realms/master/.well-known/openid-configuration
                   scopes:
                     - openid
